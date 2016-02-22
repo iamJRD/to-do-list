@@ -29,7 +29,7 @@
             $this->assertEquals($name, $result);
         }
 
-        function test_getId();
+        function test_getId()
         {
             $name = "Work stuff";
             $id = 1;
