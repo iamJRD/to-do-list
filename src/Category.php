@@ -20,9 +20,14 @@
             return $this->name;
         }
 
+        function getId()
+        {
+            return $this->id;
+        }
+
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO categories (name) VALUES ('{$this->getName()}');");
+            $GLOBALS['DB']->exec("INSERT INTO categories (name) VALUES ('{$this->getName()}')");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -33,7 +38,7 @@
             foreach($returned_categories as $category) {
                 $name = $category['name'];
                 $id = $category['id'];
-                $new_task = new Category($name, $id);
+                $new_category = new Category($name, $id);
                 array_push($categories, $new_category);
             }
             return $categories;
