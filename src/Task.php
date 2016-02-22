@@ -37,7 +37,7 @@ class Task
 
     static function deleteAll()
     {
-        $_SESSION['list_of_tasks'] = array();
+        $GLOBALS['DB']->exec("DELETE FROM tasks;");
     }
 }
  ?>
