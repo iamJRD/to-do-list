@@ -31,7 +31,7 @@
 
         function getDueDate()
         {
-            $this->due_date;
+            return $this->due_date;
         }
 
         function getId()
@@ -46,7 +46,7 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO tasks (description, category_id, due_date) VALUES ('{$this->getDescription()}', {$this->getCategoryId()}, {$this->getDueDate()})");
+            $GLOBALS['DB']->exec("INSERT INTO tasks (description, category_id, due_date) VALUES ('{$this->getDescription()}', {$this->getCategoryId()}, '{$this->getDueDate()}')");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -58,7 +58,9 @@
                 $description = $task['description'];
                 $id = $task['id'];
                 $category_id = $task['category_id'];
-                $new_task = new Task($description, $id, $category_id);
+                $due_date = $task['due_date'];
+                $new_task = new Task($description, $id, $category_id, $due_date);
+
                 array_push($tasks, $new_task);
             }
             return $tasks;
