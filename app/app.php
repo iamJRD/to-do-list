@@ -37,6 +37,7 @@
     $app->post("/tasks", function() use ($app) {
         $description = $_POST['description'];
         $category_id = $_POST['category_id'];
+        $due_date = $_POST['due_date'];
         $task = new Task($description, $id = null, $category_id, $due_date);
         $task->save();
         $category = Category::find($category_id);

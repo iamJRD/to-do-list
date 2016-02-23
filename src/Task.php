@@ -6,7 +6,7 @@
         private $category_id;
         private $due_date;
 
-        function __construct($description, $id = null, $category_id = null, $due_date)
+        function __construct($description, $id = null, $category_id, $due_date)
         {
             $this->description = $description;
             $this->id = $id;
@@ -68,7 +68,7 @@
 
         static function deleteAll()
         {
-          $GLOBALS['DB']->exec("DELETE FROM tasks;");
+            $GLOBALS['DB']->exec("DELETE FROM tasks;");
         }
 
         static function find($search_id)
