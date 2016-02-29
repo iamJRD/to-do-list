@@ -3,34 +3,31 @@
     <title>To Do List</title>
 </head>
 <body>
-    <h1>To Do List</h1>
+    <h1>Tasks</h1>
 
     {% if tasks is not empty %}
-        <p>Here are your tasks:</p>
+        <p>Here are all your tasks:</p>
         <ul>
             {% for task in tasks %}
-                <li>{{ task.getDescription }}</li>
+                <li><a href="/tasks/{{ task.getId }}">{{ task.getDescription }}</a></li>
             {% endfor %}
         </ul>
     {% endif %}
 
     <form action='/tasks' method='post'>
-        <div class="form-group">
-            <label for='description'>Task Description</label>
-            <input id='description' name='description' type='text'>
-        </div>
-        <div class="form-group">
-            <label for='due_date'>Task Completion Due Date</label>
-            <input id='due_date' name='due_date' type='date'>
-        </div>
+        <label for='description'>Task description:</label>
+        <input id='description' name='description' type='text'>
+
+        <label for='due_date'>Date to complete:</label>
+        <input id='due_date' name='due_date' type='date'>
 
         <button type='submit'>Add task</button>
     </form>
 
     <form action='/delete_tasks' method='post'>
-        <button type='submit'>Delete Tasks</button>
+        <button type='submit'>Clear</button>
     </form>
 
-    <p><a href="/">Homepage</a></p>
+    <p><a href='/'>Homepage</a></p>
 </body>
 </html>
