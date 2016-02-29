@@ -12,7 +12,7 @@
 
         function setName($new_name)
         {
-            $this->name = (string) $new_name;
+            $this->name = $new_name;
         }
 
         function getName()
@@ -86,7 +86,7 @@
             $tasks = array();
             foreach($task_ids as $id) {
                 $task_id = $id['task_id'];
-                $result = $GLOBALS['DB']->query("SELECT * FROM tasks WHERE $id = {$task_id};");
+                $result = $GLOBALS['DB']->query("SELECT * FROM tasks WHERE id = {$task_id};");
                 $returned_task = $result->fetchAll(PDO::FETCH_ASSOC);
 
                 $description = $returned_task[0]['description'];

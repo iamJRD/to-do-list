@@ -187,6 +187,7 @@
             $id2 = 2;
             $due_date = "2016-02-28";
             $test_task = new Task($description, $id2, $due_date);
+            $test_task->save();
 
             // Act
             $test_category->addTask($test_task);
