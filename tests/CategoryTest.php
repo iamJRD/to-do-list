@@ -175,5 +175,53 @@
             $this->assertEquals([$test_category2], Category::getAll());
         }
 
+        function testAddTask()
+        {
+            // Arrange
+            $name = "Work stuff";
+            $id = 1;
+            $test_category = new Category($name, $id);
+            $test_category->save();
+
+            $description = "Reply to emails";
+            $id2 = 2;
+            $due_date = "2016-02-28";
+            $test_task = new Task($description, $id2, $due_date);
+
+            // Act
+            $test_category->addTask($test_task);
+
+            // Assert
+            $this->assertEquals($test_category->getTasks(), [$test_task]);
+        }
+
+        function testGetTasks()
+        {
+            // Arrange
+            $name = "Work stuff";
+            $id = 1;
+            $test_category = new Category($name, $id);
+            $test_category->save();
+
+            $description = "Reply to emails";
+            $id2 = 2;
+            $due_date = "2016-02-28";
+            $test_task = new Task($description, $id2, $due_date);
+            $test_task->save();
+
+            $description2 = "Go to meeting";
+            $id3 = 3;
+            $due_date2 = "2016-03-01";
+            $test_task2 = new Task($description2, $id3, $due_date2);
+            $test_task2->save();
+
+            // Act
+            $test_category->addTask($test_task);
+            $test_category->addTask($test_task2);
+
+            // Assert
+            $this->assertEquals($test_category->getTasks(), [$test_task, $test_task2]);
+        }
+
     }
 ?>
