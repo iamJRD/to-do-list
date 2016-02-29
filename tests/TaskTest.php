@@ -26,6 +26,7 @@
         {
             // Arrange
             $description = "Wash the dog";
+            $id = 1;
             $due_date = "2016-02-29";
             $test_task = new Task($description, $id, $due_date);
             $test_task->save();
@@ -41,6 +42,7 @@
         {
             // Arrange
             $description = "Wash the dog";
+            $id = 1;
             $due_date = "2016-02-29";
             $test_task = new Task($description, $id, $due_date);
             $test_task->save();
@@ -57,6 +59,7 @@
         {
             //Arrange
             $description = "Wash the dog";
+            $id = 1;
             $due_date = "2016-02-29";
             $test_task = new Task($description, $id, $due_date);
             $test_task->save();
@@ -72,6 +75,7 @@
         {
             //Arrange
             $description = "Wash the dog";
+            $id = 1;
             $due_date = "2016-02-29";
             $test_task = new Task($description, $id, $due_date);
 
@@ -87,6 +91,7 @@
         {
             // Arrange
             $description = "Wash the dog";
+            $id = 1;
             $due_date = "2016-02-29";
             $test_task = new Task($description, $id, $due_date);
             $test_task->save();
@@ -102,13 +107,15 @@
         {
             //Arrange
             $description = "Wash the dog";
+            $id = 1;
             $due_date = "2016-02-29";
             $test_task = new Task($description, $id, $due_date);
             $test_task->save();
 
             $description2 = "Water the lawn";
+            $id2 = 2;
             $due_date2 = "2016-02-29";
-            $test_task2 = new Task($description2, $id, $due_date2);
+            $test_task2 = new Task($description2, $id2, $due_date2);
             $test_task2->save();
 
             //Act
@@ -122,13 +129,15 @@
         {
             //Arrange
             $description = "Wash the dog";
+            $id = 1;
             $due_date = "2016-02-29";
             $test_task = new Task($description, $id, $due_date);
             $test_task->save();
 
             $description2 = "Water the lawn";
+            $id2 = 2;
             $due_date2 = "2016-02-29";
-            $test_task2 = new Task($description2, $id, $due_date2);
+            $test_task2 = new Task($description2, $id2, $due_date2);
             $test_task2->save();
 
             //Act
@@ -143,13 +152,15 @@
         {
             //Arrange
             $description = "Wash the dog";
+            $id = 1;
             $due_date = "2016-02-29";
             $test_task = new Task($description, $id, $due_date);
             $test_task->save();
 
             $description2 = "Water the lawn";
+            $id2 = 2;
             $due_date2 = "2016-02-29";
-            $test_task2 = new Task($description2, $id, $due_date2);
+            $test_task2 = new Task($description2, $id2, $due_date2);
             $test_task2->save();
 
             //Act
@@ -163,6 +174,7 @@
         {
             // Arrange
             $description = "Wash the dog";
+            $id = 1;
             $due_date = "2016-02-29";
             $test_task = new Task($description, $id, $due_date);
             $test_task->save();
@@ -171,7 +183,7 @@
             $new_due_date = "2016-02-28";
 
             // Act
-            $test_task->update($new_description);
+            $test_task->update($new_description, $new_due_date);
 
             // Assert
             $this->assertEquals("Clean the dog", $test_task->getDescription());
@@ -181,13 +193,15 @@
         {
             // Arrange
             $description = "Wash the dog";
+            $id = 1;
             $due_date = "2016-02-29";
             $test_task = new Task($description, $id, $due_date);
             $test_task->save();
 
             $description2 = "Water the lawn";
+            $id2 = 2;
             $due_date2 = "2016-02-29";
-            $test_task2 = new Task($description2, $id, $due_date2);
+            $test_task2 = new Task($description2, $id2, $due_date2);
             $test_task2->save();
 
             // Act
