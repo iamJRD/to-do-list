@@ -3,14 +3,12 @@
     {
         private $description;
         private $id;
-        private $category_id;
         private $due_date;
 
-        function __construct($description, $id = null, $category_id, $due_date)
+        function __construct($description, $id = null, $due_date)
         {
             $this->description = $description;
             $this->id = $id;
-            $this->category_id = $category_id;
             $this->due_date = $due_date;
         }
 
@@ -39,14 +37,9 @@
             return $this->id;
         }
 
-        function getCategoryId()
-        {
-            return $this->category_id;
-        }
-
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO tasks (description, category_id, due_date) VALUES ('{$this->getDescription()}', {$this->getCategoryId()}, '{$this->getDueDate()}')");
+            $GLOBALS['DB']->exec("INSERT INTO tasks (description, due_date) VALUES ('{$this->getDescription()}', '{$this->getDueDate()}')");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -57,9 +50,8 @@
             foreach($returned_tasks as $task) {
                 $description = $task['description'];
                 $id = $task['id'];
-                $category_id = $task['category_id'];
                 $due_date = $task['due_date'];
-                $new_task = new Task($description, $id, $category_id, $due_date);
+                $new_task = new Task($description, $id, $due_date);
 
                 array_push($tasks, $new_task);
             }
@@ -82,6 +74,18 @@
                 }
             }
             return $found_task;
+        }
+
+        function update($new_description, $new_due_date)
+        {
+            $GLOBALS['DB']->exec("UPDATE tasks SET description = '{$new_description}', due_date = '{$new_due_date}' WHERE id = {$this->getId()};");
+            $this->setDescription($new_description);
+            $this->setDueDate($new_due_date);
+        }
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec ("DELETE FROM tasks WHERE id = {$this->getId()};");
         }
     }
 ?>
